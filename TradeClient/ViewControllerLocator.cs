@@ -28,5 +28,17 @@ namespace TradeClient
                 return LoginViewController.LoginView;
             }
         }
+
+        public SignupViewController SignupView
+        {
+            get
+            {
+                if (SignupViewController.SignupView == null)
+                {
+                    SignupViewController.SignupView = NavigationViewController.NavigationView.Storyboard.InstantiateViewController("SignupViewController") as SignupViewController;
+                }
+                return SignupViewController.SignupView;
+            }
+        }
     }
 }

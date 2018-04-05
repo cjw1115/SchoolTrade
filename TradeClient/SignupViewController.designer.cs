@@ -11,16 +11,20 @@ using UIKit;
 
 namespace TradeClient
 {
-    [Register ("LoginViewController")]
-    partial class LoginViewController
+    [Register ("SignupViewController")]
+    partial class SignupViewController
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton btnLogin { get; set; }
+        UIKit.UIButton btnSignup { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIButton btnSignup { get; set; }
+        UIKit.UITextField tbName { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UINavigationBar tbNavigationBar { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -28,18 +32,27 @@ namespace TradeClient
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField tbUsername { get; set; }
+        UIKit.UITextField tbPasswordRe { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField tbTel { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
-            if (btnLogin != null) {
-                btnLogin.Dispose ();
-                btnLogin = null;
-            }
-
             if (btnSignup != null) {
                 btnSignup.Dispose ();
                 btnSignup = null;
+            }
+
+            if (tbName != null) {
+                tbName.Dispose ();
+                tbName = null;
+            }
+
+            if (tbNavigationBar != null) {
+                tbNavigationBar.Dispose ();
+                tbNavigationBar = null;
             }
 
             if (tbPassword != null) {
@@ -47,9 +60,14 @@ namespace TradeClient
                 tbPassword = null;
             }
 
-            if (tbUsername != null) {
-                tbUsername.Dispose ();
-                tbUsername = null;
+            if (tbPasswordRe != null) {
+                tbPasswordRe.Dispose ();
+                tbPasswordRe = null;
+            }
+
+            if (tbTel != null) {
+                tbTel.Dispose ();
+                tbTel = null;
             }
         }
     }

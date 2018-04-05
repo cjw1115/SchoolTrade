@@ -16,7 +16,11 @@ namespace TradeClient
         {
             base.LoadView();
             this.btnLogin.TouchUpInside += BtnLogin_TouchUpInside;
+            this.btnSignup.TouchUpInside += BtnSignup_TouchUpInside;
         }
+
+        
+
         private void BtnLogin_TouchUpInside(object sender, EventArgs e)
         {
             Login();
@@ -33,6 +37,11 @@ namespace TradeClient
             {
                 Services.NotityService.Notify("登陆信息不完整");
             }
+        }
+
+        private void BtnSignup_TouchUpInside(object sender, EventArgs e)
+        {
+            NavigationViewController.NavigationView.PushViewController(NavigationViewController.Loactor.SignupView, true);
         }
     }
 }

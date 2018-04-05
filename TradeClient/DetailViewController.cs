@@ -3,6 +3,9 @@ using System;
 using UIKit;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
+
 namespace TradeClient
 {
     public partial class DetailViewController : UIViewController
@@ -16,12 +19,28 @@ namespace TradeClient
         {
             DetailView = this;
         }
-        public override void ViewDidLoad()
+        public override async void ViewDidLoad()
         {
             base.ViewDidLoad();
-
+            OrderDetail=await GetGoodsDetail();
             listDetail.Source = new DetailTableSource(GetDetailList());
             
+        }
+        public async Task<Models.OrderFormModel> GetGoodsDetail()
+        {
+            try
+            {   
+                string url = $"http://xiandanke.cn/api/orderform/detail?id={ID}";
+                var httpService = Services.StatusService.GetHttpService();
+                var re = await httpService.SendRequst(url, HttpMethod.Get);
+                var result = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.ResultModel>(re);
+                var goodDetail = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.OrderFormModel>(result.data.ToString());
+                return goodDetail;
+            }
+            catch
+            {
+                return null;
+            }
         }
         public Dictionary<string,string> GetDetailList()
         {

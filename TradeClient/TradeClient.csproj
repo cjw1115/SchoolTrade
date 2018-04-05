@@ -70,6 +70,10 @@
     <Compile Include="DetailViewController.designer.cs">
       <DependentUpon>DetailViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditUserViewController.cs" />
+    <Compile Include="EditUserViewController.designer.cs">
+      <DependentUpon>EditUserViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="GoodsViewController.cs" />
     <Compile Include="GoodsViewController.designer.cs">
       <DependentUpon>GoodsViewController.cs</DependentUpon>
@@ -82,6 +86,8 @@
     <Compile Include="AppDelegate.cs" />
     <Compile Include="Models\GoodModel.cs" />
     <Compile Include="Models\IToastNotificator.cs" />
+    <Compile Include="Models\ResultModel.cs" />
+    <Compile Include="Models\UserInfoModel.cs" />
     <Compile Include="MyViewController.cs" />
     <Compile Include="MyViewController.designer.cs">
       <DependentUpon>MyViewController.cs</DependentUpon>
@@ -98,6 +104,10 @@
     <Compile Include="Services\NotityService.cs" />
     <Compile Include="Services\StatusService.cs" />
     <Compile Include="Services\ToastNotificator.cs" />
+    <Compile Include="SignupViewController.cs" />
+    <Compile Include="SignupViewController.designer.cs">
+      <DependentUpon>SignupViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="TradeTabController.cs" />
     <Compile Include="TradeTabController.designer.cs">
       <DependentUpon>TradeTabController.cs</DependentUpon>
@@ -114,6 +124,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />

@@ -1,6 +1,8 @@
 ﻿using Foundation;
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
+using System.Threading.Tasks;
 using UIKit;
 
 namespace TradeClient
@@ -12,28 +14,38 @@ namespace TradeClient
         {
             
         }
-        public override void ViewDidLoad()
+        public override async void ViewDidLoad()
         {
             base.ViewDidLoad();
-            string[] tableItems = new string[] { "Vegetables", "Fruits", "Flower Buds", "Legumes", "Bulbs", "Tubers" };
-            listGoods.Source = new TableSource(tableItems);
+            var re = await GetGoodsList();
+            listGoods.Source = new TableSource(re);
 
         }
 
-        public void GetGoodsList()
+        public async Task<Models.OrderFormModel[]> GetGoodsList()
         {
-            string url = $"http://www.xiandanke.cn/api/orderform?order={(IsHighToLow ? 1 : 0).ToString()}";
-            var httpService=Services.StatusService.GetHttpService();
-            var re=httpService.SendRequst(url, HttpMethod.Get);
+            try
+            {
+                string url = $"http://www.xiandanke.cn/api/orderform/get?order={(IsHighToLow ? 1 : 0).ToString()}";
+                var httpService = Services.StatusService.GetHttpService();
+                var re = await httpService.SendRequst(url, HttpMethod.Get);
+                var result=Newtonsoft.Json.JsonConvert.DeserializeObject<Models.ResultModel>(re);
+                var goods= Newtonsoft.Json.JsonConvert.DeserializeObject<Models.OrderFormModel[]>(result.data.ToString());
+                return goods;
+            }
+            catch
+            {
+                return null;
+            }
         }
     }
     public class TableSource : UITableViewSource
     {
 
-        string[] TableItems;
+        Models.OrderFormModel[] TableItems;
         string CellIdentifier = "TableCell";
 
-        public TableSource(string[] items)
+        public TableSource(Models.OrderFormModel[] items)
         {
             TableItems = items;
         }
@@ -46,15 +58,15 @@ namespace TradeClient
         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
         {
             UITableViewCell cell = tableView.DequeueReusableCell(CellIdentifier);
-            string item = TableItems[indexPath.Row];
+            Models.OrderFormModel item = TableItems[indexPath.Row];
 
             //---- if there are no cells to reuse, create a new one
             if (cell == null)
             {
                 cell = new UITableViewCell(UITableViewCellStyle.Value1, CellIdentifier);
             }
-            cell.TextLabel.Text = item;
-            cell.DetailTextLabel.Text = "300.0";
+            cell.TextLabel.Text = item.Name;
+            cell.DetailTextLabel.Text = item.Price.ToString();
             cell.Accessory = UITableViewCellAccessory.DisclosureIndicator;
 
             return cell;

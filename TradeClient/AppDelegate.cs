@@ -15,14 +15,21 @@ namespace TradeClient
             get;
             set;
         }
+        public static UIStoryboard Storyboard = UIStoryboard.FromName("MainStoryboard", null);
+        public static UIViewController initialViewController;
+
 
         public override bool FinishedLaunching(UIApplication application, NSDictionary launchOptions)
         {
             // create a new window instance based on the screen size
             Window = new UIWindow(UIScreen.MainScreen.Bounds);
 
+            //global::Xamarin.Forms.Forms.Init();
+
+            initialViewController =Storyboard.InstantiateInitialViewController() as UIViewController;
             // If you have defined a root view controller, set it here:
-            // Window.RootViewController = myViewController;
+
+            Window.RootViewController = initialViewController;
 
             // make the window visible
             Window.MakeKeyAndVisible();

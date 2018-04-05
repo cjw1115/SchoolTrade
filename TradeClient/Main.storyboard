@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="1274">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <scene sceneID="1273">
+            <objects>
+                <viewController id="1274" sceneMemberID="viewController" customClass="MainViewController" storyboardIdentifier="MainViewController" useStoryboardIdentifierAsRestorationIdentifier="YES">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1271"/>
+                        <viewControllerLayoutGuide type="bottom" id="1272"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1275">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3624" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                                <rect key="frame" x="106" y="306" width="200" height="30"/>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <segue id="3827" destination="1292" kind="show"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="3627" translatesAutoresizingMaskIntoConstraints="NO" placeholder="密码" misplaced="YES">
+                                <rect key="frame" x="107" y="222" width="200" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" textContentType="password"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="3628" translatesAutoresizingMaskIntoConstraints="NO" placeholder="用户名" misplaced="YES">
+                                <rect key="frame" x="106" y="175" width="201" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" textContentType="username"/>
+                            </textField>
+                        </subviews>
+                        <constraints>
+                            <constraint id="3629" firstItem="3628" firstAttribute="top" secondItem="1271" secondAttribute="bottom" constant="200"/>
+                            <constraint id="3630" firstItem="3628" firstAttribute="leading" secondItem="1275" secondAttribute="leadingMargin" constant="100" relation="lessThanOrEqual"/>
+                            <constraint id="3631" firstItem="1275" firstAttribute="trailingMargin" secondItem="3628" secondAttribute="trailing" constant="100" relation="lessThanOrEqual"/>
+                            <constraint id="3632" firstItem="3627" firstAttribute="top" secondItem="3628" secondAttribute="bottom" constant="16"/>
+                            <constraint id="3633" firstItem="3627" firstAttribute="leading" secondItem="3628" secondAttribute="leading" constant="1"/>
+                            <constraint id="3634" firstItem="3627" firstAttribute="trailing" secondItem="3628" secondAttribute="trailing"/>
+                            <constraint id="3635" firstItem="3624" firstAttribute="top" secondItem="3627" secondAttribute="bottom" constant="32"/>
+                            <constraint id="3636" firstItem="3627" firstAttribute="leading" secondItem="3624" secondAttribute="leading" constant="1"/>
+                            <constraint id="3637" firstItem="3627" firstAttribute="trailing" secondItem="3624" secondAttribute="trailing" constant="1"/>
+                            <constraint id="3638" firstItem="3627" firstAttribute="trailing" secondItem="3624" secondAttribute="trailing" constant="1"/>
+                        </constraints>
+                    </view>
+                    <connections/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1276" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-470" y="-378"/>
+        </scene>
+        <scene sceneID="1291">
+            <objects>
+                <viewController id="1292" sceneMemberID="viewController" customClass="DetailViewController" storyboardIdentifier="DetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="1289"/>
+                        <viewControllerLayoutGuide type="bottom" id="1290"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1293">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="2068" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES" contentInsetAdjustmentBehavior="always">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1752" translatesAutoresizingMaskIntoConstraints="NO" fixedFrame="YES">
+                                        <rect key="frame" x="19" y="28" width="46" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                        <connections>
+                                            <segue id="1988" destination="1274" kind="push"/>
+                                        </connections>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </button>
+                                </subviews>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </scrollView>
+                        </subviews>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1294" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="154" y="-367"/>
+        </scene>
+    </scenes>
+</document>

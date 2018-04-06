@@ -5,18 +5,16 @@ using UIKit;
 
 namespace TradeClient
 {
-    public partial class MyViewController : UIViewController
+    public partial class TradeTabController : UITabBarController
     {
-        public MyViewController (IntPtr handle) : base (handle)
+        public TradeTabController (IntPtr handle) : base (handle)
         {
-           
         }
         public override void LoadView()
         {
             base.LoadView();
-
-            var re = StatusService.GetIsLogin();
-            if (re == false)
+            
+            if (StatusService.CurrentUser==null)
             {
                 NavigationViewController.NavigationView.PushViewController(NavigationViewController.Loactor.LoginView, true);
             }

@@ -20,11 +20,19 @@ namespace TradeClient
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITextField tbName { get; set; }
+        UIKit.UIView ContentView { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UINavigationBar tbNavigationBar { get; set; }
+        UIKit.UIScrollView scrollViewer { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField tbCollege { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField tbGender { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -38,6 +46,10 @@ namespace TradeClient
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITextField tbTel { get; set; }
 
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UITextField tbUsername { get; set; }
+
         void ReleaseDesignerOutlets ()
         {
             if (btnSignup != null) {
@@ -45,14 +57,24 @@ namespace TradeClient
                 btnSignup = null;
             }
 
-            if (tbName != null) {
-                tbName.Dispose ();
-                tbName = null;
+            if (ContentView != null) {
+                ContentView.Dispose ();
+                ContentView = null;
             }
 
-            if (tbNavigationBar != null) {
-                tbNavigationBar.Dispose ();
-                tbNavigationBar = null;
+            if (scrollViewer != null) {
+                scrollViewer.Dispose ();
+                scrollViewer = null;
+            }
+
+            if (tbCollege != null) {
+                tbCollege.Dispose ();
+                tbCollege = null;
+            }
+
+            if (tbGender != null) {
+                tbGender.Dispose ();
+                tbGender = null;
             }
 
             if (tbPassword != null) {
@@ -68,6 +90,11 @@ namespace TradeClient
             if (tbTel != null) {
                 tbTel.Dispose ();
                 tbTel = null;
+            }
+
+            if (tbUsername != null) {
+                tbUsername.Dispose ();
+                tbUsername = null;
             }
         }
     }

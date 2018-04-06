@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
+using TradeClient.Controls;
 
 namespace TradeClient
 {
@@ -18,13 +19,82 @@ namespace TradeClient
         public DetailViewController (IntPtr handle) : base (handle)
         {
             DetailView = this;
+
         }
-        public override async void ViewDidLoad()
+        public override void ViewDidLoad()
         {
             base.ViewDidLoad();
-            OrderDetail=await GetGoodsDetail();
+
+            this.btnGet.TouchUpInside += BtnGet_TouchUpInside;
+        }
+        private Indicator indicator;
+        private bool _isLoadiang;
+        public bool IsLoading
+        {
+            get => _isLoadiang;
+            set
+            {
+                _isLoadiang = value;
+                if (value == true)
+                {
+                    indicator = new Indicator(View, View.Frame);
+                    indicator.Show();
+                }
+                else
+                {
+                    indicator?.Hide();
+                }
+            }
+        }
+        private async void BtnGet_TouchUpInside(object sender, EventArgs e)
+        {
+            IsLoading = true;
+
+            if (Services.StatusService.CurrentUser == null)
+            {
+                IsLoading = false;
+                NavigationViewController.NavigationView.PushViewController(NavigationViewController.Loactor.LoginView, true);
+                return;
+            }
+            try
+            {
+                
+                Dictionary<string, string> dic = new Dictionary<string, string>();
+                //dic.Add("orderformId", OrderDetail.Id.ToString());
+                //dic.Add("id", Services.StatusService.CurrentUser.Id.ToString());
+
+                string url = $"http://www.xiandanke.cn/api/myorderform?id={Services.StatusService.CurrentUser.Id.ToString()}&orderformId={OrderDetail.Id.ToString()}";
+
+                var httpService = Services.StatusService.GetHttpService();
+                var re = await httpService.SendRequst(url, HttpMethod.Put,dic);
+                var result = Newtonsoft.Json.JsonConvert.DeserializeObject<Models.ResultModel>(re);
+                
+                if((bool)result.data==true)
+                {
+                    Services.NotityService.Notify("购买成功");
+                }
+                else
+                {
+                    Services.NotityService.Notify(result.msg);
+                }
+            }
+            catch(Exception ex)
+            {
+                Services.NotityService.Notify($"购买出错:{ex.Message}");
+            }
+            finally
+            {
+                IsLoading = false;
+            }
+        }
+
+        public override void ViewDidAppear(bool animated)
+        {
+            base.ViewDidAppear(animated);
+
+            //OrderDetail = await GetGoodsDetail();
             listDetail.Source = new DetailTableSource(GetDetailList());
-            
+            listDetail.ReloadData();
         }
         public async Task<Models.OrderFormModel> GetGoodsDetail()
         {
@@ -52,6 +122,7 @@ namespace TradeClient
                 dic.Add("交易地点", OrderDetail.Address);
                 dic.Add("新旧程度", OrderDetail.Degree.ToString());
                 dic.Add("发布时间", OrderDetail.AddTime.ToString());
+                dic.Add("状态", OrderDetail.OrderStatus);
 
             }
             return dic;
@@ -84,7 +155,7 @@ namespace TradeClient
             }
             cell.TextLabel.Text = item.Key;
             cell.DetailTextLabel.Text = item.Value;
-            cell.Accessory = UITableViewCellAccessory.DisclosureIndicator;
+            //cell.Accessory = UITableViewCellAccessory.DisclosureIndicator;
 
             return cell;
         }

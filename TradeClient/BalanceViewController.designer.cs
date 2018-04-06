@@ -11,27 +11,27 @@ using UIKit;
 
 namespace TradeClient
 {
-    [Register ("GoodsViewController")]
-    partial class GoodsViewController
+    [Register ("BalanceViewController")]
+    partial class BalanceViewController
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UITableView listGoods { get; set; }
+        UIKit.UIButton btnCharge { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        UIKit.UIView viewHeader { get; set; }
+        UIKit.UITextField tbBalance { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
-            if (listGoods != null) {
-                listGoods.Dispose ();
-                listGoods = null;
+            if (btnCharge != null) {
+                btnCharge.Dispose ();
+                btnCharge = null;
             }
 
-            if (viewHeader != null) {
-                viewHeader.Dispose ();
-                viewHeader = null;
+            if (tbBalance != null) {
+                tbBalance.Dispose ();
+                tbBalance = null;
             }
         }
     }

@@ -134,19 +134,16 @@ namespace TradeClient
             }
             try
             {
-                Dictionary<string, string> dic = new Dictionary<string, string>();
-                dic.Add("Tel", tel);
-                dic.Add("Name", username);
-                dic.Add("PassWord", password);
-
-                dic.Add("DepartmentId", College.Key);
-                dic.Add("DepartmentName", College.Value);
-                dic.Add("Sex", ((int)Gender).ToString());
-                string url = $"http://www.xiandanke.cn/api/user/register";
+                Dictionary<string, string> dic = new Dictionary<string, string>(0);
+               
+                //dic.Add("DepartmentId", College.Key);
+                //dic.Add("DepartmentName", College.Value);
+                //dic.Add("Sex", ((int)Gender).ToString());
+                string url = $"http://www.xiandanke.cn/api/user/register?name={username}&password={password}&tel={tel}";
                 var re = await Services.StatusService.GetHttpService().SendRequst(url, HttpMethod.Post, dic);
-
+                
                 var result = Newtonsoft.Json.JsonConvert.DeserializeObject<ResultModel>(re);
-                if (result.data.ToString() == "true")
+                if ( (bool)result.data == true)
                 {
                     Services.NotityService.Notify("注册成功");
                     this.NavigationController.PopViewController(true);

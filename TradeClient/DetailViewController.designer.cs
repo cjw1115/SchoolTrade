@@ -16,10 +16,19 @@ namespace TradeClient
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton btnGet { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UITableView listDetail { get; set; }
 
         void ReleaseDesignerOutlets ()
         {
+            if (btnGet != null) {
+                btnGet.Dispose ();
+                btnGet = null;
+            }
+
             if (listDetail != null) {
                 listDetail.Dispose ();
                 listDetail = null;

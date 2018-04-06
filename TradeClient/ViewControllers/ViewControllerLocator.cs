@@ -6,6 +6,7 @@ namespace TradeClient
 {
     public class ViewControllerLocator
     {
+       
         public DetailViewController DetailView
         {
             get
@@ -38,6 +39,18 @@ namespace TradeClient
                     SignupViewController.SignupView = NavigationViewController.NavigationView.Storyboard.InstantiateViewController("SignupViewController") as SignupViewController;
                 }
                 return SignupViewController.SignupView;
+            }
+        }
+
+        public BalanceViewController BalanceView
+        {
+            get
+            {
+                if (BalanceViewController.BalanceView == null)
+                {
+                    BalanceViewController.BalanceView = NavigationViewController.NavigationView.Storyboard.InstantiateViewController("BalanceViewController") as BalanceViewController;
+                }
+                return BalanceViewController.BalanceView;
             }
         }
     }

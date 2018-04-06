@@ -65,13 +65,18 @@
     <AppExtensionDebugBundleId />
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="BalanceViewController.cs" />
+    <Compile Include="BalanceViewController.designer.cs">
+      <DependentUpon>BalanceViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Indicator.cs" />
     <Compile Include="Controls\TTGSnackbar.cs" />
     <Compile Include="Helpers\Settings.cs" />
     <Compile Include="Models\CollegeModel.cs" />
     <Compile Include="Models\Gender.cs" />
-    <Compile Include="ViewControllers\DetailViewController.cs" />
-    <Compile Include="ViewControllers\DetailViewController.designer.cs">
+    <Compile Include="Models\OrderStatus.cs" />
+    <Compile Include="DetailViewController.cs" />
+    <Compile Include="DetailViewController.designer.cs">
       <DependentUpon>DetailViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewControllers\EditUserViewController.cs" />
@@ -100,8 +105,8 @@
     <Compile Include="ViewControllers\NavigationViewController.designer.cs">
       <DependentUpon>NavigationViewController.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewControllers\OrderViewController.cs" />
-    <Compile Include="ViewControllers\OrderViewController.designer.cs">
+    <Compile Include="OrderViewController.cs" />
+    <Compile Include="OrderViewController.designer.cs">
       <DependentUpon>OrderViewController.cs</DependentUpon>
     </Compile>
     <Compile Include="Services\HttpBaseService.cs" />
